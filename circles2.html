@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Circles</title>
+	
+	<script type="text/javascript" src="paperjs-v0.11.5/lib/paper-full.js"></script>
+	<script type="text/javascript" src="paperjs-v0.11.5/lib/paper-core.js"></script>
+	<script type="text/javascript" src="paperjs-v0.11.5/lib/paper-core.min.js"></script>
+	<script type="text/javascript" src="paperjs-v0.11.5/lib/paper-full.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.12/howler.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/circles.css">
+	<script type="text/paperscript" canvas="myCanvas">
+
+	var circles = [];
+	var sound = new Howl({
+		src: ["sounds/sounds/bubbles.mp3"]
+	});
+
+	var sound2 = new Howl({
+		src: ["sounds/sounds/clay.mp3"]
+	});
+
+
+	function onKeyDown(event) {
+	
+	
+	var maxpoint = new Point(view.size.width, view.size.height);
+	var randompoint = Point.random();
+	var point = maxpoint*randompoint;
+	var newcircle = new Path.Circle(point, 300);
+	newcircle.fillColor = "orange";
+	// if key press a-play sound 1
+	if(event.key === "a"){
+		sound.play();
+		newcircle.fillColor = "#2c3e50";
+	}
+	// else play sound2
+	else if(event.key === "s"){
+		sound2.play();
+		newcircle.fillColor = "#16a085";
+	}
+	else{
+		newcircle.fillColor = "orange";
+	}
+	circles.push(newcircle);	
+}
+
+	
+
+	function onFrame(event){
+		for(var i=0 ; i < circles.length ; i++){
+		// hue is used to change colors for one frame again again
+			circles[i].fillColor.hue+=1;
+			// scale is used to shrink circle
+			circles[i].scale(0.9);
+		}
+		
+	}
+
+
+
+
+	
+	
+
+</script>
+</head>
+<body>
+<canvas id="myCanvas" resize></canvas>
+
+</body>
+</html>

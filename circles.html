@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Circles</title>
+	
+	<script type="text/javascript" src="paperjs-v0.11.5/lib/paper-full.js"></script>
+	<script type="text/javascript" src="paperjs-v0.11.5/lib/paper-core.js"></script>
+	<script type="text/javascript" src="paperjs-v0.11.5/lib/paper-core.min.js"></script>
+	<script type="text/javascript" src="paperjs-v0.11.5/lib/paper-full.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/circles.css">
+	<script type="text/paperscript" canvas="myCanvas">
+
+	for(var x = 0 ; x <  1000 ; x+=100){
+		for(var y = 0 ; y <  1000 ; y+=100){
+			var Circle2 = new Path.Circle(new Point(x, y), 10);
+			Circle2.fillColor = "yellow";
+		}
+	}
+
+		
+
+</script>
+</head>
+<body>
+<canvas id="myCanvas" resize></canvas>
+
+</body>
+</html>
